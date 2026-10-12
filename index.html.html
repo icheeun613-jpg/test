@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#2563eb">
+  <title>쿠팡 스마트 쇼핑 도우미</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="홈">
+      <span class="brand-mark">S</span>
+      <span>스마트 쇼핑<span class="brand-light"> 도우미</span></span>
+    </a>
+    <nav class="desktop-nav" aria-label="주요 메뉴">
+      <a class="active" href="#compare">가격 비교</a>
+      <a href="#recent">최근 본 상품</a>
+      <a href="#payments">결제 관리</a>
+    </nav>
+    <button class="profile-button" id="profileButton" aria-label="저장 데이터 안내">내 쇼핑</button>
+  </header>
+
+  <main class="page">
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow"><span class="eyebrow-dot"></span> SMART SHOPPING ASSISTANT</span>
+        <h1>더 똑똑하게 비교하고,<br><span>필요한 만큼만 구매하세요.</span></h1>
+        <p>가격 비교부터 최근 본 상품, 정기결제 일정까지<br class="desktop-only"> 한곳에서 간편하게 관리해 보세요.</p>
+        <a class="primary-button" href="#compare">가격 비교 시작하기 <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="art-circle circle-one"></div><div class="art-circle circle-two"></div>
+        <div class="mock-card">
+          <div class="mock-head"><span>가격 비교 리포트</span><span class="mini-status">BEST PRICE</span></div>
+          <div class="mock-product"><div class="product-emoji">🎧</div><div><strong>무선 헤드폰</strong><small>동일 모델 · 3개 판매 옵션</small></div></div>
+          <div class="price-row"><span>판매 옵션 A</span><strong>₩29,900</strong></div>
+          <div class="price-row best"><span>판매 옵션 B <b>최저가</b></span><strong>₩24,900</strong></div>
+          <div class="savings"><span>예상 절약 금액</span><strong>₩5,000</strong></div>
+        </div>
+        <div class="floating-tag"><span>✓</span> 합리적인 소비</div>
+      </div>
+    </section>
+
+    <section class="section-heading" id="compare">
+      <div><span class="section-kicker">COMPARE</span><h2>상품 가격 비교</h2><p>상품명이나 카테고리를 입력하고 예시 판매 옵션을 비교해 보세요.</p></div>
+      <span class="section-icon blue-icon">↔</span>
+    </section>
+    <section class="panel compare-panel">
+      <form id="compareForm" class="search-form">
+        <label class="search-box"><span aria-hidden="true">⌕</span><input id="productSearch" type="search" placeholder="상품명 검색 (예: 무선 헤드폰)" autocomplete="off"><button type="button" id="clearSearch" class="clear-search" aria-label="검색어 지우기">×</button></label>
+        <button class="primary-button search-button" type="submit">가격 비교 <span>→</span></button>
+      </form>
+      <div class="filter-row">
+        <span class="muted-label">추천 검색</span>
+        <button class="chip" data-search="무선 헤드폰">무선 헤드폰</button>
+        <button class="chip" data-search="텀블러">텀블러</button>
+        <button class="chip" data-search="키보드">키보드</button>
+        <span class="data-note">데모용 예시 데이터 · 실제 실시간 가격 아님</span>
+      </div>
+      <div class="result-heading"><div><h3 id="resultTitle">무선 헤드폰 비교 결과</h3><p id="resultSub">가격과 배송 옵션을 함께 확인하세요.</p></div><span class="result-count" id="resultCount">3개 옵션</span></div>
+      <div class="offer-list" id="offerList" aria-live="polite"></div>
+      <div class="compare-footer"><span>ⓘ 배송비 등 추가 비용은 구매 전 판매 페이지에서 확인하세요.</span><button class="text-button" id="saveComparison">비교 결과 저장 ♡</button></div>
+    </section>
+
+    <section class="two-column">
+      <div class="content-section" id="recent">
+        <div class="section-heading compact"><div><span class="section-kicker">RECENTLY VIEWED</span><h2>최근 본 상품</h2><p>관심 있던 상품을 다시 쉽게 찾아보세요.</p></div><span class="section-icon purple-icon">◷</span></div>
+        <div class="panel recent-panel">
+          <div class="recent-toolbar"><span id="recentCount">저장된 상품 0개</span><button class="text-button" id="clearRecent">전체 삭제</button></div>
+          <div id="recentList" class="recent-list"></div>
+          <div id="recentEmpty" class="empty-state"><span class="empty-icon">⌕</span><strong>아직 기록된 상품이 없어요</strong><p>가격 비교 결과에서 ‘다시 보기’를 눌러 상품을 저장해 보세요.</p></div>
+        </div>
+      </div>
+      <div class="content-section" id="payments">
+        <div class="section-heading compact"><div><span class="section-kicker">PAYMENT CARE</span><h2>정기결제 관리</h2><p>다음 결제일을 확인하고 미리 알림을 설정하세요.</p></div><span class="section-icon orange-icon">₩</span></div>
+        <div class="panel payments-panel">
+          <div class="payment-summary"><div><span>이번 달 예정 결제</span><strong id="monthlyTotal">₩0</strong></div><span class="calendar-icon">▦</span></div>
+          <form id="paymentForm" class="payment-form">
+            <label>서비스 이름<input id="serviceName" maxlength="35" placeholder="예: 음악 스트리밍" required></label>
+            <div class="form-grid"><label>예상 금액 (원)<input id="serviceAmount" type="number" min="0" step="100" placeholder="10900" required></label><label>다음 결제일<input id="serviceDate" type="date" required></label></div>
+            <label class="check-label"><input id="serviceReminder" type="checkbox" checked> 결제 예정일 3일 전 알림 표시</label>
+            <button class="secondary-button" type="submit">+ 결제 일정 등록</button>
+          </form>
+          <div class="payment-list" id="paymentList"></div>
+          <p class="disclaimer">이 기능은 직접 등록한 일정과 알림을 브라우저에 저장합니다. 쿠팡 또는 결제 서비스의 자동결제를 직접 해지하지는 않습니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="feature-strip">
+      <div class="feature"><span class="feature-icon blue-icon">↔</span><div><strong>한눈에 가격 비교</strong><p>가격·배송 옵션을 나란히 확인</p></div></div>
+      <div class="feature"><span class="feature-icon purple-icon">◷</span><div><strong>다시 찾기 간편하게</strong><p>최근 본 상품을 자동 저장</p></div></div>
+      <div class="feature"><span class="feature-icon orange-icon">✓</span><div><strong>결제 일정 놓치지 않기</strong><p>예정 금액과 날짜를 미리 확인</p></div></div>
+    </section>
+  </main>
+
+  <footer class="footer"><a class="brand footer-brand" href="#"><span class="brand-mark">S</span><span>스마트 쇼핑 도우미</span></a><p>더 편리하고 합리적인 쇼핑 습관을 위한 개인 관리 도구</p><span>데이터는 현재 브라우저의 localStorage에 저장됩니다.</span></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
